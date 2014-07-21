@@ -15,6 +15,7 @@ Compatible-Versions:
 - 0.2.13
 - 0.2.14
 Cartridge-Vendor: webratio
+Source-Url: https://github.com/marcellodionisiowr/openshift-origin-cartridge-webratiomysql.git
 License: GPL
 Vendor: Oracle
 Categories:
