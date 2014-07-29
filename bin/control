@@ -241,9 +241,9 @@ function cleanup_dump {
 
 # Clean up any log files
 function tidy() {
-  client_message "Deleting mysql logs from $OPENSHIFT_LOG_DIR"
-  shopt -s dotglob
-  rm -rf $OPENSHIFT_LOG_DIR/mysql.log*
+  #client_message "Deleting mysql logs from $OPENSHIFT_LOG_DIR"
+  #shopt -s dotglob
+  #rm -rf $OPENSHIFT_LOG_DIR/mysql.log*
 }
 
 case "$1" in
