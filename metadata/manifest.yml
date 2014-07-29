@@ -43,7 +43,7 @@ Provides:
 - mysql-5.5
 - mysql
 - mysql-singleton-master
-Source-Url:https://github.com/marcellodionisiowr/openshift-origin-cartridge-webratiomysql.git
+Source-Url: https://github.com/marcellodionisiowr/openshift-origin-cartridge-webratiomysql.git
 Publishes:
   publish-db-connection-info:
     Type: ENV:NET_TCP:db:connection-info
