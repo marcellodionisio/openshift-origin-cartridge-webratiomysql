@@ -36,7 +36,7 @@ function start {
     rm -f $OPENSHIFT_LOG_DIR/mysql*.log
     oo-erb ${OPENSHIFT_MYSQL_DIR}conf/my.cnf.erb.hidden > ${OPENSHIFT_MYSQL_DIR}conf/my.cnf
     #mysql_context "/usr/bin/mysqld_safe --defaults-file=$OPENSHIFT_MYSQL_DIR/conf/my.cnf --log-error=$OPENSHIFT_MYSQL_DIR/stdout.err |& /usr/bin/logshifter -tag mysql" &
-    wait_for_mysqld_availability
+    #wait_for_mysqld_availability
   else
     echo "MySQL already running" 1>&2
   fi
@@ -241,9 +241,9 @@ function cleanup_dump {
 
 # Clean up any log files
 function tidy() {
-  #client_message "Deleting mysql logs from $OPENSHIFT_LOG_DIR"
-  #shopt -s dotglob
-  #rm -rf $OPENSHIFT_LOG_DIR/mysql.log*
+  client_message "Deleting mysql logs from $OPENSHIFT_LOG_DIR"
+  shopt -s dotglob
+  rm -rf $OPENSHIFT_LOG_DIR/mysql.log*
 }
 
 case "$1" in
