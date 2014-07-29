@@ -6,7 +6,7 @@ export STOPTIMEOUT=10
 
 # Run mysql commands
 function run_sql {
-  echo "$@" | /usr/bin/mysql -h $OPENSHIFT_MYSQL_DB_HOST -P $OPENSHIFT_MYSQL_DB_PORT -u $OPENSHIFT_MYSQL_DB_USERNAME --password="$OPENSHIFT_MYSQL_DB_PASSWORD" --skip-column-names
+  echo "$@" | mysql_context "/usr/bin/mysql -h $OPENSHIFT_MYSQL_DB_HOST -P $OPENSHIFT_MYSQL_DB_PORT -u $OPENSHIFT_MYSQL_DB_USERNAME --password="$OPENSHIFT_MYSQL_DB_PASSWORD" --skip-column-names
 }
 
 function is_running {
