@@ -15,7 +15,6 @@ Compatible-Versions:
 - 0.2.13
 - 0.2.14
 Cartridge-Vendor: webratio
-Source-Url: https://github.com/marcellodionisiowr/openshift-origin-cartridge-webratiomysql.git
 License: GPL
 Vendor: Oracle
 Categories:
@@ -44,6 +43,7 @@ Provides:
 - mysql-5.5
 - mysql
 - mysql-singleton-master
+Source-Url:https://raw.githubusercontent.com/marcellodionisiowr/openshift-origin-cartridge-webratiomysql/master/metadata/manifest.yml
 Publishes:
   publish-db-connection-info:
     Type: ENV:NET_TCP:db:connection-info

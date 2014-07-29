@@ -35,8 +35,8 @@ function start {
     echo "Starting MySQL ${OPENSHIFT_MYSQL_VERSION} cartridge"
     rm -f $OPENSHIFT_LOG_DIR/mysql*.log
     oo-erb ${OPENSHIFT_MYSQL_DIR}conf/my.cnf.erb.hidden > ${OPENSHIFT_MYSQL_DIR}conf/my.cnf
-    #mysql_context "/usr/bin/mysqld_safe --defaults-file=$OPENSHIFT_MYSQL_DIR/conf/my.cnf --log-error=$OPENSHIFT_MYSQL_DIR/stdout.err |& /usr/bin/logshifter -tag mysql" &
-    #wait_for_mysqld_availability
+    mysql_context "/usr/bin/mysqld_safe --defaults-file=$OPENSHIFT_MYSQL_DIR/conf/my.cnf --log-error=$OPENSHIFT_MYSQL_DIR/stdout.err |& /usr/bin/logshifter -tag mysql" &
+    wait_for_mysqld_availability
   else
     echo "MySQL already running" 1>&2
   fi
@@ -57,12 +57,11 @@ function wait_for_mysqld_availability {
     sleep 1
   done
 
-
   # Send error logs to console, otherwise the logs file will be erased
   # when MySQL server fail to start.
   #
   echo "MySQL server failed to start:"
-  #cat $OPENSHIFT_LOG_DIR/mysql.log
+  cat $OPENSHIFT_LOG_DIR/mysql.log
   exit 1
 }
 
@@ -188,7 +187,7 @@ function post_restore {
 
     # Grant permissions to the current user
     run_sql "
-    GRANT ALL ON *.* TO '$NEW_USER'@'%' IDENTIFIED BY '$OPENSHIFT_MYSQL_DB_PASSWORD' WITH GRANT OPTION;
+    GRANT ALL ON *.* TO '$NEW_USER'@'$NEW_IP' IDENTIFIED BY '$OPENSHIFT_MYSQL_DB_PASSWORD' WITH GRANT OPTION;
     GRANT ALL ON *.* TO '$NEW_USER'@'%' IDENTIFIED BY '$OPENSHIFT_MYSQL_DB_PASSWORD' WITH GRANT OPTION;
     " || error "Could not grant permissions for MySQL database" 187
 
