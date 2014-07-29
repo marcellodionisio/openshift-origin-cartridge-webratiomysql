@@ -14,7 +14,7 @@ datadir=<%= ENV['OPENSHIFT_MYSQL_DIR'] %>data/
 socket=<%= ENV['OPENSHIFT_MYSQL_DB_SOCKET'] %>
 # Disable reverse DNS resolving of gear ip BZ#1051348
 skip-name-resolve
-bind-address=<%= ENV['OPENSHIFT_MYSQL_DB_HOST'] %>
+bind-address=0.0.0.0
 # Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
 <% if ENV['OPENSHIFT_MYSQL_IDENT'] =~ /:5\.5:/ %>
